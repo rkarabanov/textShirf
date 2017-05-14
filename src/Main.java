@@ -22,8 +22,6 @@ public class Main {
 
     String shifrTxt=shifrTxt(allLetters,text);
 
-
-
         System.out.println(shifrTxt);
         System.out.println(deshifrTxt(allLetters,shifrTxt));
 
@@ -35,9 +33,8 @@ public class Main {
     }
 
     public static int formula(int x){
-        return 2*x*x+x*(-3)+9;
+        return -2*x*x+x*(-3)+9;
     }
-
 
 
     public static ArrayList<Integer> appraisal(int size){
@@ -70,6 +67,7 @@ public class Main {
     }
 
     public static String deshifrTxt(String allLetters,String text){
+//        System.out.println(text);
         int size=allLetters.length();
         ArrayList<Integer> numbers=appraisal(size);
 

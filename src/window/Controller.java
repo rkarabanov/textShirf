@@ -17,5 +17,15 @@ import java.io.IOException;
 
 public class Controller {
 
+    @FXML
+    private Button exitBtn;
+
+
+       public void close(ActionEvent event) {
+
+
+        Stage stage = (Stage) exitBtn.getScene().getWindow();
+        stage.close();
+    }
 
 }
