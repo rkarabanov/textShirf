@@ -110,6 +110,9 @@ public class Controller {
         fTxt.setVisible(false);
         tTxt.setText("");
         fTxt.setText("");
+        tLabel.setText("");
+        fLabel.setText("");
+        shifrBtn.setDisable(true);
     }
 
 
