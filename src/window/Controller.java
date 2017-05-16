@@ -26,6 +26,8 @@ public class Controller {
 
     @FXML
     private TextArea tTxt,fTxt;
+    @FXML
+    private TextField aField,bField,cField;
 
     @FXML
     private AnchorPane start, versions, formula;
@@ -113,6 +115,9 @@ public class Controller {
         tLabel.setText("");
         fLabel.setText("");
         shifrBtn.setDisable(true);
+        aField.setText("");
+        bField.setText("");
+        cField.setText("");
     }
 
 
