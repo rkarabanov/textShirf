@@ -1,19 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="variantsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="window.Controller">
+<AnchorPane fx:id="variantsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="600.0" style="-fx-background-color: #DCF9E3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="window.Controller">
    <children>
-      <Button fx:id="shifrBtn" layoutX="31.0" layoutY="54.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="115.0" text="Шифровать" />
-      <Button fx:id="deshifrBtn" layoutX="35.0" layoutY="151.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="115.0" text="Дешифровать" />
-      <Button fx:id="exitBtn" layoutX="31.0" layoutY="353.0" mnemonicParsing="false" onAction="#close" prefHeight="56.0" prefWidth="115.0" text="Выход" />
-      <AnchorPane fx:id="v" layoutX="200.0" layoutY="51.0" prefHeight="319.0" prefWidth="200.0">
+      <AnchorPane fx:id="versions" layoutX="200.0" layoutY="51.0" prefHeight="373.0" prefWidth="200.0" visible="false">
          <children>
-            <Button fx:id="txttxtBtn" layoutX="43.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="115.0" text="Из текстового поля в текстовое поле" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="txtfileBtn" layoutX="43.0" layoutY="80.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="115.0" text="Из текстового поля в файл" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="filefileBtn" layoutX="43.0" layoutY="160.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="115.0" text="Из файла в файл" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="filetxtBtn" layoutX="43.0" layoutY="240.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="115.0" text="Из файла в текстовое поле" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="txttxtBtn" layoutX="43.0" mnemonicParsing="false" onAction="#txttxt" prefHeight="65.0" prefWidth="115.0" text="Из текстового поля в текстовое поле" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="txtfileBtn" layoutX="43.0" layoutY="80.0" mnemonicParsing="false" onAction="#txtfile" prefHeight="65.0" prefWidth="115.0" text="Из текстового поля в файл" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="filefileBtn" layoutX="43.0" layoutY="160.0" mnemonicParsing="false" onAction="#filefile" prefHeight="65.0" prefWidth="115.0" text="Из файла в файл" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="filetxtBtn" layoutX="43.0" layoutY="240.0" mnemonicParsing="false" onAction="#filetxt" prefHeight="65.0" prefWidth="115.0" text="Из файла в текстовое поле" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="back" layoutX="74.0" layoutY="320.0" mnemonicParsing="false" onAction="#backAction" prefHeight="31.0" prefWidth="53.0" text="Назад" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="start" layoutX="24.0" layoutY="48.0" prefHeight="362.0" prefWidth="188.0">
+         <children>
+            <Button fx:id="shifrBtn" layoutX="35.0" mnemonicParsing="false" onAction="#goS" prefHeight="65.0" prefWidth="115.0" text="Шифровать" />
+            <Button fx:id="deshifrBtn" layoutX="39.0" layoutY="88.0" mnemonicParsing="false" onAction="#goD" prefHeight="65.0" prefWidth="115.0" text="Дешифровать" />
+            <Button fx:id="exitBtn" layoutX="35.0" layoutY="290.0" mnemonicParsing="false" onAction="#close" prefHeight="65.0" prefWidth="115.0" text="Выход" />
+            <Button fx:id="readyBtn" layoutX="35.0" layoutY="226.0" mnemonicParsing="false" onAction="#goWork" prefHeight="56.0" prefWidth="115.0" text="Готово" textFill="#75ae45" visible="false">
+               <font>
+                  <Font name="Bell MT Bold" size="15.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+      <TextArea fx:id="fTxt" layoutX="212.0" layoutY="48.0" prefHeight="146.0" prefWidth="363.0" visible="false" wrapText="true" />
+      <TextArea fx:id="tTxt" layoutX="212.0" layoutY="255.0" prefHeight="146.0" prefWidth="363.0" visible="false" wrapText="true" />
+      <Label fx:id="fLabel" disable="true" layoutX="232.0" layoutY="99.0" prefHeight="31.0" prefWidth="211.0" style="-fx-border-color: black;" visible="false" />
+      <Button fx:id="fFile" layoutX="443.0" layoutY="99.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="115.0" text="Выбрать откуда" visible="false" />
+      <Button fx:id="tFile" layoutX="443.0" layoutY="297.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="115.0" text="Выбрать куда" visible="false" />
+      <Label fx:id="tLabel" disable="true" layoutX="232.0" layoutY="297.0" prefHeight="31.0" prefWidth="211.0" style="-fx-border-color: black;" visible="false" />
+      <AnchorPane fx:id="formula" layoutX="228.0" layoutY="202.0" prefHeight="40.0" prefWidth="298.0" visible="false">
+         <children>
+            <TextField fx:id="aField" layoutY="5.0" prefHeight="31.0" prefWidth="35.0" />
+            <Label fx:id="aLabel" layoutX="35.0" layoutY="5.0" prefHeight="31.0" prefWidth="41.0" text="x^2+">
+               <font>
+                  <Font name="Agency FB" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="bLabel" layoutX="107.0" layoutY="5.0" prefHeight="31.0" prefWidth="25.0" text="x+">
+               <font>
+                  <Font name="Agency FB" size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="bField" layoutX="72.0" layoutY="5.0" prefHeight="31.0" prefWidth="35.0" />
+            <TextField fx:id="cField" layoutX="132.0" layoutY="5.0" prefHeight="31.0" prefWidth="35.0" />
+            <Button fx:id="startBnt" disable="true" layoutX="188.0" layoutY="5.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="41.0" text="Ok">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="clabel" layoutX="175.0" layoutY="5.0" prefHeight="31.0" prefWidth="25.0" text="=">
+               <font>
+                  <Font name="Agency FB" size="25.0" />
+               </font>
+            </Label>
+            <Button fx:id="backVariants" layoutX="232.0" layoutY="5.0" mnemonicParsing="false" onAction="#backVariants" prefHeight="31.0" prefWidth="52.0" text="Назад" />
          </children>
       </AnchorPane>
    </children>
