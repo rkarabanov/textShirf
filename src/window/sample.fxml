@@ -22,7 +22,7 @@
          <children>
             <Button fx:id="shifrBtn" layoutX="35.0" mnemonicParsing="false" onAction="#goS" prefHeight="65.0" prefWidth="115.0" text="Шифровать" />
             <Button fx:id="deshifrBtn" layoutX="39.0" layoutY="88.0" mnemonicParsing="false" onAction="#goD" prefHeight="65.0" prefWidth="115.0" text="Дешифровать" />
-            <Button fx:id="exitBtn" layoutX="35.0" layoutY="290.0" mnemonicParsing="false" onAction="#close" prefHeight="65.0" prefWidth="115.0" text="Выход" />
+            <Button fx:id="exitBtn" focusTraversable="false" layoutX="35.0" layoutY="290.0" mnemonicParsing="false" onAction="#close" prefHeight="65.0" prefWidth="115.0" text="Выход" />
             <Button fx:id="readyBtn" layoutX="35.0" layoutY="226.0" mnemonicParsing="false" onAction="#goWork" prefHeight="56.0" prefWidth="115.0" text="Готово" textFill="#75ae45" visible="false">
                <font>
                   <Font name="Bell MT Bold" size="15.0" />
@@ -30,11 +30,11 @@
             </Button>
          </children></AnchorPane>
       <TextArea fx:id="fTxt" layoutX="212.0" layoutY="48.0" prefHeight="146.0" prefWidth="363.0" visible="false" wrapText="true" />
-      <TextArea fx:id="tTxt" layoutX="212.0" layoutY="255.0" prefHeight="146.0" prefWidth="363.0" visible="false" wrapText="true" />
-      <Label fx:id="fLabel" disable="true" layoutX="232.0" layoutY="99.0" prefHeight="31.0" prefWidth="211.0" style="-fx-border-color: black;" visible="false" />
-      <Button fx:id="fFile" layoutX="443.0" layoutY="99.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="115.0" text="Выбрать откуда" visible="false" />
-      <Button fx:id="tFile" layoutX="443.0" layoutY="297.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="115.0" text="Выбрать куда" visible="false" />
-      <Label fx:id="tLabel" disable="true" layoutX="232.0" layoutY="297.0" prefHeight="31.0" prefWidth="211.0" style="-fx-border-color: black;" visible="false" />
+      <TextArea fx:id="tTxt" disable="true" layoutX="212.0" layoutY="255.0" prefHeight="146.0" prefWidth="363.0" visible="false" wrapText="true" />
+      <Label fx:id="fLabel" layoutX="232.0" layoutY="99.0" prefHeight="31.0" prefWidth="211.0" style="-fx-border-color: black;" visible="false" />
+      <Button fx:id="fFile" layoutX="443.0" layoutY="99.0" mnemonicParsing="false" onAction="#choosefFile" prefHeight="31.0" prefWidth="115.0" text="Выбрать откуда" visible="false" />
+      <Button fx:id="tFile" layoutX="443.0" layoutY="297.0" mnemonicParsing="false" onAction="#choosetFile" prefHeight="31.0" prefWidth="115.0" text="Выбрать куда" visible="false" />
+      <Label fx:id="tLabel" layoutX="232.0" layoutY="297.0" prefHeight="31.0" prefWidth="211.0" style="-fx-border-color: black;" visible="false" />
       <AnchorPane fx:id="formula" layoutX="228.0" layoutY="202.0" prefHeight="40.0" prefWidth="298.0" visible="false">
          <children>
             <TextField fx:id="aField" layoutY="5.0" prefHeight="31.0" prefWidth="35.0" />
@@ -50,7 +50,7 @@
             </Label>
             <TextField fx:id="bField" layoutX="72.0" layoutY="5.0" prefHeight="31.0" prefWidth="35.0" />
             <TextField fx:id="cField" layoutX="132.0" layoutY="5.0" prefHeight="31.0" prefWidth="35.0" />
-            <Button fx:id="startBnt" disable="true" layoutX="188.0" layoutY="5.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="41.0" text="Ok">
+            <Button fx:id="startBtn" layoutX="188.0" layoutY="5.0" mnemonicParsing="false" onAction="#goWork" prefHeight="31.0" prefWidth="41.0" text="Ok">
                <font>
                   <Font size="14.0" />
                </font>

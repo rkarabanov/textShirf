@@ -1,25 +1,20 @@
 package window;
 
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import infoWindow.InfoWindow;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Polygon;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
 
 public class Controller {
 
     @FXML
-    private Button exitBtn, shifrBtn, deshifrBtn, back, tFile,fFile,startBnt;
+    private Button exitBtn, shifrBtn, deshifrBtn, back, tFile,fFile,startBtn;
 
     @FXML
     private Label tLabel,fLabel;
@@ -32,19 +27,25 @@ public class Controller {
     @FXML
     private AnchorPane start, versions, formula;
 
+    final String TO_FILE="TO_FILE",TO_TXT="TO_TXT",SHIFR="SHIFR",DESHIFR="DESHIFR";
+
+
+    String to="",type="";
+
+    File t=null,f=null;
 
     public void goD(ActionEvent event) {
         shifrBtn.setVisible(false);
         deshifrBtn.setDisable(true);
         exitBtn.setVisible(false);
         versions.setVisible(true);
+        type=DESHIFR;
     }
     public void goS(ActionEvent event) {
         shifrBtn.setDisable(true);exitBtn.setVisible(false);
-
+        type=SHIFR;
         deshifrBtn.setVisible(false);
         versions.setVisible(true);
-
     }
 
     public void backAction(ActionEvent event) {
@@ -61,6 +62,7 @@ public class Controller {
         fFileSetVisible(true);
         formulaSetVisible(true);
         versions.setVisible(false);
+        to=TO_FILE;
     }
 
     public void txtfile(){
@@ -68,6 +70,7 @@ public class Controller {
         fTxt.setVisible(true);
         formulaSetVisible(true);
         versions.setVisible(false);
+        to=TO_FILE;
     }
 
     public void txttxt(){
@@ -75,6 +78,7 @@ public class Controller {
         fTxt.setVisible(true);
         formulaSetVisible(true);
         versions.setVisible(false);
+        to=TO_TXT;
     }
 
     public void filetxt(){
@@ -82,6 +86,7 @@ public class Controller {
         tTxt.setVisible(true);
         formulaSetVisible(true);
         versions.setVisible(false);
+        to=TO_TXT;
     }
 
 
@@ -101,8 +106,37 @@ public class Controller {
 
     public void goWork(ActionEvent event){
 
+        if(valid(event)){System.out.println(valid(event));}
+        else {
+            new InfoWindow();
+        }
+
     }
 
+    public boolean valid(ActionEvent event){
+         System.out.print("1: ");
+            System.out.println(isNumeric(aField.getText())&&isNumeric(bField.getText())
+                    &&isNumeric(cField.getText()));
+            System.out.print("2: ");
+            System.out.println((fLabel.getText().length()>0||fTxt.getText().length()>0));
+            if(isNumeric(aField.getText())&&isNumeric(bField.getText())
+                    &&isNumeric(cField.getText())&&(fLabel.getText().length()>0||fTxt.getText().length()>0)){
+                if((to.compareTo(TO_FILE)==0&&tLabel.getText().length()>0)||to.compareTo(TO_TXT)==0){
+                    return true;
+                }
+                else {
+                    return false;
+                }}
+            else{
+                return false;
+            }
+
+
+    }
+    private static boolean isNumeric(String str)
+    {
+        return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+    }
     public void backVariants(){
         versions.setVisible(true);
         formulaSetVisible(false);
@@ -114,16 +148,48 @@ public class Controller {
         fTxt.setText("");
         tLabel.setText("");
         fLabel.setText("");
-        shifrBtn.setDisable(true);
+//        startBtn.setDisable(true);
         aField.setText("");
         bField.setText("");
         cField.setText("");
+        to="";
     }
 
+    public void choosetFile(){
+        File file = chooseFile();
+        if (file == null) {
+            System.out.println("lol");
+        }else{
+            t=file;
+            tLabel.setText(file.getAbsolutePath());
+            System.out.println(tTxt.getText());
+        }
+    }
+
+    public void choosefFile(){
+        File file = chooseFile();
+        if (file == null) {
+            System.out.println("lol");
+        }else{
+            f=file;
+            fLabel.setText(file.getAbsolutePath());
+            System.out.println(file.getName());
+            System.out.println(file.getAbsolutePath());
+            System.out.println(fTxt.getText());
+        }
+    }
 
        public void close(ActionEvent event) {
         Stage stage = (Stage) exitBtn.getScene().getWindow();
         stage.close();
+    }
+
+    private File chooseFile() {
+        Stage stage = (Stage) start.getScene().getWindow();
+        FileChooser fc=new FileChooser();
+        fc.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("*.txt", "*.txt"));
+        return fc.showOpenDialog(stage);
     }
 
 }
