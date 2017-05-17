@@ -1,3 +1,5 @@
+package window.logic;
+
 import java.util.ArrayList;
 
 /**
@@ -53,4 +55,6 @@ public class Common {
         }
         return numbers;
     }
+
+
 }

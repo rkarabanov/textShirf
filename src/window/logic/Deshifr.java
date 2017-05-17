@@ -1,3 +1,5 @@
+package window.logic;
+
 import java.util.ArrayList;
 
 /**
@@ -5,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Deshifr extends Common implements Runnable  {
 
-    Deshifr(int a,int b, int c, String text){
+    public Deshifr(int a,int b, int c, String text){
         super(a,b, c, text);
     }
 
@@ -13,7 +15,7 @@ public class Deshifr extends Common implements Runnable  {
     public void run() {
 
         Result.res=deshifrTxt(getText());
-
+        System.out.println(Result.res);
     }
 
     public static String deshifrTxt(String text){

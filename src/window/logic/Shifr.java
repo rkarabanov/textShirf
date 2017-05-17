@@ -1,3 +1,5 @@
+package window.logic;
+
 import java.util.ArrayList;
 
 /**
@@ -8,13 +10,14 @@ public class Shifr extends Common implements Runnable  {
 //    int a=0, b=0, c=0;
 //    String text="";
 
-    Shifr(int a,int b, int c, String text){
+    public Shifr(int a, int b, int c, String text){
     super(a,b, c, text);
     }
 
     @Override
     public void run() {
         Result.res=shifrTxt(getText());
+        System.out.println(Result.res);
     }
 
 

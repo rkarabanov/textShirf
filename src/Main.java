@@ -11,7 +11,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-//        String allLetters=Letters.allLetters;
+//        String allLetters=window.logic.Letters.allLetters;
 //    String text="рок-группа"
 //            +", основанная в 1993 году Дианой Арбениной и Светланой Сургановой. Постоянный участник крупнейших российских рок-фестивалей. Наибольшую известность получили такие песни коллектива, как «31 весна», «Ты дарила мне розы», «Рубеж», «Столица», «Асфальт», «Актриса».";
 //
@@ -85,10 +85,10 @@ public class Main {
 //        return res;
 
 
-//        new Shifr(2,3,4,"Я Роман").run();
-//        System.out.println(Result.res);
-//        new Deshifr(2,3,4,Result.res).run();
-//        System.out.println(Result.res);
+//        new window.logic.Shifr(2,3,4,"Я Роман").run();
+//        System.out.println(window.logic.Result.res);
+//        new window.logic.Deshifr(2,3,4,window.logic.Result.res).run();
+//        System.out.println(window.logic.Result.res);
     }
 
 }
